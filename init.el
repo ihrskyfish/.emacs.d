@@ -31,15 +31,21 @@
 
 
 ;; 或中科大镜像源
-(setq package-archives '(("gnu"    . "https://mirrors.ustc.edu.cn/elpa/gnu/")
-                         ("nongnu" . "https://mirrors.ustc.edu.cn/elpa/nongnu/")
-                         ("melpa"  . "https://mirrors.ustc.edu.cn/elpa/melpa/")))
+;; (setq package-archives '(("gnu"    . "https://mirrors.ustc.edu.cn/elpa/gnu/")
+;;                          ("nongnu" . "https://mirrors.ustc.edu.cn/elpa/nongnu/")
+;;                          ("melpa"  . "https://mirrors.ustc.edu.cn/elpa/melpa/")))
+
+
+;; (setq package-archives '(("gnu" . "https://mirrors.ustc.edu.cn/elpa/gnu/")
+;;                          ("melpa" . "https://mirrors.ustc.edu.cn/elpa/melpa/")
+;;                          ("nongnu" . "https://mirrors.ustc.edu.cn/elpa/nongnu/")))
 (package-initialize)
 
 ;; 自动安装 use-package
 (unless (package-installed-p 'use-package)
   (package-refresh-contents)
-  (package-install 'use-package))
+(package-install 'use-package)
+)
 (require 'use-package)
 
 
@@ -105,8 +111,8 @@
 
 
 
-(use-package rime
-  :custom
-  (default-input-method "rime")
-  (rime-librime-root "~/.emacs.d/librime/dist")  ;; 编译好的 librime 路径
-  (rime-show-candidate 'minibuffer))  ;; TUI 下用 minibuffer 显示候选
+;; (use-package rime
+;;   :custom
+;;   (default-input-method "rime")
+;;   (rime-librime-root "~/.emacs.d/librime/dist")  ;; 编译好的 librime 路径
+;;   (rime-show-candidate 'minibuffer))  ;; TUI 下用 minibuffer 显示候选
