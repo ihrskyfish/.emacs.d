@@ -11,6 +11,8 @@
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  )
+;; 将 lisp/ 加入加载路径
+(add-to-list 'load-path (expand-file-name "lisp" user-emacs-directory))
 
 (defun open-init-file()
   (interactive)
