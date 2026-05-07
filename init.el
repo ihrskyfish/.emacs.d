@@ -11,7 +11,28 @@
  ;; If there is more than one, they won't work right.
  )
 
+;; 确保 use-package 可用
+(require 'package)
+(add-to-list 'package-archives '("melpa" . "https://melpa.org/packages/") t)
+(add-to-list 'package-archives '("gnu" . "https://elpa.gnu.org/packages/") t)
 
+;; 清华镜像源
+;; (setq package-archives '(("gnu"    . "https://mirrors.tuna.tsinghua.edu.cn/elpa/gnu/")
+;;                          ("nongnu" . "https://mirrors.tuna.tsinghua.edu.cn/elpa/nongnu/")
+;;                          ("melpa"  . "https://mirrors.tuna.tsinghua.edu.cn/elpa/melpa/")))
+
+
+;; 或中科大镜像源
+(setq package-archives '(("gnu"    . "https://mirrors.ustc.edu.cn/elpa/gnu/")
+                         ("nongnu" . "https://mirrors.ustc.edu.cn/elpa/nongnu/")
+                         ("melpa"  . "https://mirrors.ustc.edu.cn/elpa/melpa/")))
+(package-initialize)
+
+;; 自动安装 use-package
+(unless (package-installed-p 'use-package)
+  (package-refresh-contents)
+  (package-install 'use-package))
+(require 'use-package)
 
 
 
@@ -77,3 +98,11 @@
 
 (fido-mode t)           ; 或 (fido-vertical-mode t) 垂直布局
 (setq completion-styles '(flex))  ; 启用模糊匹配
+
+
+
+(use-package rime
+  :custom
+  (default-input-method "rime")
+  (rime-librime-root "~/.emacs.d/librime/dist")  ;; 编译好的 librime 路径
+  (rime-show-candidate 'minibuffer))  ;; TUI 下用 minibuffer 显示候选
