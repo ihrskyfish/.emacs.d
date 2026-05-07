@@ -111,8 +111,11 @@
 
 
 
-;; (use-package rime
-;;   :custom
-;;   (default-input-method "rime")
-;;   (rime-librime-root "~/.emacs.d/librime/dist")  ;; 编译好的 librime 路径
-;;   (rime-show-candidate 'minibuffer))  ;; TUI 下用 minibuffer 显示候选
+(use-package rime
+  :custom
+  (default-input-method "rime")
+  (rime-librime-root "~/.emacs.d/librime/dist")  ;; 编译好的 librime 路径
+   (rime-show-candidate 'minibuffer))  ;; TUI 下用 minibuffer 显示候选
+
+
+
