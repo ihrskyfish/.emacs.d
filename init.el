@@ -11,6 +11,14 @@
  ;; If there is more than one, they won't work right.
  )
 
+(defun open-init-file()
+  (interactive)
+  (find-file "~/.emacs.d/init.el"))
+
+;; 这一行代码，将函数 open-init-file 绑定到 <f2> 键上
+(global-set-key (kbd "<f2>") 'open-init-file)
+
+
 ;; 确保 use-package 可用
 (require 'package)
 (add-to-list 'package-archives '("melpa" . "https://melpa.org/packages/") t)
@@ -44,9 +52,6 @@
  ;; 第一个值是活跃时透明度，第二个是非活跃时
 ;; 自定义颜色（按自己主题改）
 (set-face-background 'hl-line "#3e4451")
-(defun open-init-file()
-  (interactive)
-  (find-file "~/.emacs.d/init.el"))
 
 (defun my/toggle-transparency ()
   (interactive)
@@ -72,8 +77,7 @@
 (setq recentf-max-menu-items 10)
 
 
-;; 这一行代码，将函数 open-init-file 绑定到 <f2> 键上
-(global-set-key (kbd "<f2>") 'open-init-file)
+
 
 ;;(mapc (lambda (file) (when (file-exists-p file) (message "已加载: %s" file))) user-init-file)
 ;; 
