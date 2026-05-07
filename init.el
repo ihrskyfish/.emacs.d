@@ -3,7 +3,8 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(custom-enabled-themes '(manoj-dark)))
+ '(custom-enabled-themes '(manoj-dark))
+ '(package-selected-packages '(chinese-number chinese-wbim)))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
@@ -111,11 +112,32 @@
 
 
 
-(use-package rime
-  :custom
-  (default-input-method "rime")
-  (rime-librime-root "~/.emacs.d/librime/dist")  ;; 编译好的 librime 路径
-   (rime-show-candidate 'minibuffer))  ;; TUI 下用 minibuffer 显示候选
+;; (use-package rime
+;;   :custom
+;;   (default-input-method "rime")
+;;   (rime-librime-root "~/.emacs.d/librime/dist")  ;; 如果 librime 非系统安装
+;;   (rime-show-candidate 'posframe)  ;; 候选框显示方式：posframe / minibuffer / message
+;;   (rime-user-data-dir "~/.config/ibus/rime")  ;; 共享系统 Rime 配置
+;;   (rime-inline-ascii-trigger 'shift-l)  ;; Shift 切换中英文
+;;   :bind
+;;   (:map rime-mode-map
+;;         ("C-`" . rime-send-keybinding))  ;; 发送 Rime 快捷键（如 ` 切换方案）
+;;   :config
+;;   ;; 在特定场景下自动切换到英文
+;;   (setq rime-disable-predicates
+;;         '(rime-predicate-evil-mode-p
+;;           rime-predicate-after-ascii-char-p
+          ;; rime-predicate-prog-in-code-p)))
+
+
+;; (use-package chinese-wbim )
+
+;; 
+;; (use-package rime
+;;   :custom
+;;   (default-input-method "rime")
+;;   (rime-librime-root "~/.emacs.d/librime/dist")  ;; 编译好的 librime 路径
+;;    (rime-show-candidate 'minibuffer))  ;; TUI 下用 minibuffer 显示候选
 
 
 
