@@ -151,9 +151,9 @@
   :demand t  ;; 立即加载，避免切换输入法时延迟
   ;; :custom
   ;; 单字模式
-  :config
-  
+  ;; :config
   (setq default-input-method "pyim")
+  ;; (setq pyim-default-scheme 'wubi)      ;; 五笔
   (setq pyim-max-word-length 1)
   (setq pyim-enable-shortcode nil)
   (setq pyim-enable-word-predict nil)
