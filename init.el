@@ -138,8 +138,9 @@
 ;; 
 (use-package rime
     :ensure t
-  ;; :custom			      
-  ;; (default-input-method "rime")
+  :custom			      
+    ;; (default-input-method "rime")
+      (rime-user-data-dir "~/.config/ibus/rime")  ;; 共享系统 Rime 配置
   ;; (rime-librime-root "~/.emacs.d/librime/dist")  ;; 编译好的 librime 路径
   ;; (rime-show-candidate 'minibuffer)
   )  ;; TUI 下用 minibuffer 显示候选
@@ -189,5 +190,19 @@
 
 
   
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
