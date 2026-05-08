@@ -5,7 +5,7 @@
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(custom-enabled-themes '(manoj-dark))
- '(package-selected-packages '(chinese-number chinese-wbim pyim pyim-wbdict)))
+ '(package-selected-packages '(chinese-number chinese-wbim pyim pyim-wbdict rime)))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
@@ -137,10 +137,12 @@
 
 ;; 
 (use-package rime
-  :custom
+    :ensure t
+  ;; :custom			      
   ;; (default-input-method "rime")
   ;; (rime-librime-root "~/.emacs.d/librime/dist")  ;; 编译好的 librime 路径
-   (rime-show-candidate 'minibuffer))  ;; TUI 下用 minibuffer 显示候选
+  ;; (rime-show-candidate 'minibuffer)
+  )  ;; TUI 下用 minibuffer 显示候选
 
 
 
