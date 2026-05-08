@@ -144,12 +144,11 @@
       (rime-user-data-dir "~/.config/ibus/rime")  ;; 共享系统 Rime 配置
   ;; (rime-librime-root "~/.emacs.d/librime/dist")  ;; 编译好的 librime 路径
       (rime-show-candidate 'popup)
-  ;; :bind
-  ;; (:map rime-mode-map
-  ;;       ("C-`" . rime-send-keybinding))  ;; 发送 Rime 快捷键（如 ` 切换方案）
+  :bind
+  (:map rime-mode-map
+        ("C-`" . rime-send-keybinding))  ;; 发送 Rime 快捷键（如 ` 切换方案）
   ;; ( rime-send-keybinding  "C-`")  )  ;; 不行
 
-  :bind
   ("C-`" . rime-send-keybinding)
   )  ;; TUI 下用 minibuffer 显示候选
 
