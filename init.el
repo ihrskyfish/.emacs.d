@@ -5,7 +5,7 @@
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(custom-enabled-themes '(manoj-dark))
- '(package-selected-packages '(chinese-number chinese-wbim pyim pyim-wbdict rime)))
+ '(package-selected-packages nil))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
@@ -40,9 +40,9 @@
 ;;                          ("melpa"  . "https://mirrors.ustc.edu.cn/elpa/melpa/")))
 
 
-;; (setq package-archives '(("gnu" . "https://mirrors.ustc.edu.cn/elpa/gnu/")
-;;                          ("melpa" . "https://mirrors.ustc.edu.cn/elpa/melpa/")
-;;                          ("nongnu" . "https://mirrors.ustc.edu.cn/elpa/nongnu/")))
+(setq package-archives '(("gnu" . "https://mirrors.ustc.edu.cn/elpa/gnu/")
+                         ("melpa" . "https://mirrors.ustc.edu.cn/elpa/melpa/")
+                         ("nongnu" . "https://mirrors.ustc.edu.cn/elpa/nongnu/")))
 (package-initialize)
 
 ;; 自动安装 use-package
@@ -147,12 +147,15 @@
   :bind
   (:map rime-mode-map
         ("C-`" . rime-send-keybinding))  ;; 发送 Rime 快捷键（如 ` 切换方案）
-  ;; ( rime-send-keybinding  "C-`")  )  ;; 不行
+  ;; ( rime-send-keybinding  "C-`")  )  ;; 不行  (excute
 
   ("C-`" . rime-send-keybinding)
   )  ;; TUI 下用 minibuffer 显示候选
 
-
+;; (use-package librime
+;;     :ensure t
+   
+;;   )
 
 
 (use-package pyim
