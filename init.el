@@ -1,3 +1,4 @@
+;; -*- lexical-binding: t; -*-
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
@@ -146,11 +147,26 @@
 
 (use-package pyim
   :ensure t
-  :config
+
   :demand t  ;; 立即加载，避免切换输入法时延迟
+  ;; :custom
+  ;; 单字模式
+  :config
+  
   (setq default-input-method "pyim")
-  ;; 启用五笔
-  (setq pyim-default-scheme 'wubi)
+  (setq pyim-max-word-length 1)
+  (setq pyim-enable-shortcode nil)
+  (setq pyim-enable-word-predict nil)
+  (setq pyim-enable-auto-build-word-predict nil)
+  
+  ;; 界面精简
+  (setq pyim-page-length 5)           ;; 单字不需要太多候选
+  ;; (setq pyim-page-tooltip 'minibuffer)  ;; 或 posframe
+  (setq pyim-page-tooltip 'popup)  ;; 或 posframe
+  
+  ;; 4. 清理已有词库缓存，重启生效
+  ;; M-x pyim-dcache-delete-all-icache
+  
   ;; 下载五笔词库（首次使用会自动提示，或手动执行）
   ;; M-x pyim-dcache-upgrade
   )
@@ -158,8 +174,7 @@
 
 
 
-   
 
 
+  
 
- 
