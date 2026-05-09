@@ -5,7 +5,7 @@
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(custom-enabled-themes '(manoj-dark))
- '(package-selected-packages nil))
+ '(package-selected-packages '(chinese-number chinese-wbim pyim-wbdict rime vterm)))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
@@ -221,47 +221,13 @@
 
 
 
-(defvar bazi-tiangan ["甲" "乙" "丙" "丁" "戊" "己" "庚" "辛" "壬" "癸"])
-(defvar bazi-dizhi   ["子" "丑" "寅" "卯" "辰" "巳" "午" "未" "申" "酉" "戌" "亥"])
 
-(defun insert-current-bazi ()
-  "Insert current year/month/day/hour pillar (八字) at point.
-Note: This is a simplified version using approximate solar term calculations.
-For precise BaZi, professional tools are recommended."
-  (interactive)
-  (let* ((now (decode-time))
-         (year (nth 5 now))
-         (month (nth 4 now))
-         (day (nth 3 now))
-         (hour (nth 2 now))
-         
-         ;; 年柱：以立春为界（简化处理，实际需按节气）
-         (year-gan-idx (% (- year 4) 10))
-         (year-zhi-idx (% (- year 4) 12))
-         
-         ;; 月柱：按节气月（简化按农历月）
-         (month-gan-idx (% (+ (* (% (- year 4) 5) 2) month 1) 10))
-         (month-zhi-idx (% (+ month 1) 12))
-         
-         ;; 日柱：基于1900-01-31为基准（简化计算）
-         (days-since-1900 (time-to-days (encode-time 0 0 0 day month year)))
-         (day-gan-idx (% (+ days-since-1900 9) 10))
-         (day-zhi-idx (% (+ days-since-1900 11) 12))
-         
-         ;; 时柱
-         (shi-idx (/ (+ hour 1) 2))
-         (hour-gan-idx (% (+ (* day-gan-idx 2) shi-idx) 10))
-         (hour-zhi-idx (% shi-idx 12)))
-    
-    (insert (format "%s%s %s%s %s%s %s%s\n"
-                    (aref bazi-tiangan year-gan-idx)
-                    (aref bazi-dizhi year-zhi-idx)
-                    (aref bazi-tiangan month-gan-idx)
-                    (aref bazi-dizhi month-zhi-idx)
-                    (aref bazi-tiangan day-gan-idx)
-                    (aref bazi-dizhi day-zhi-idx)
-                    (aref bazi-tiangan hour-gan-idx)
-                    (aref bazi-dizhi hour-zhi-idx)))))
+
+
 
 ;; 绑定快捷键
 (global-set-key (kbd "C-c b") 'insert-current-bazi)
+
+
+
+
