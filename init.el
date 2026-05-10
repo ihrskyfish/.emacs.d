@@ -192,6 +192,7 @@
 
 (use-package magit
   :ensure t
+  :defer t
 
   )
 (use-package hydra
@@ -213,7 +214,8 @@
   ("q" nil :exit t))
   )
 (use-package key-chord
-  :ensure t
+  :ensure
+  :defer 222
   :config
 (key-chord-define-global "jk" 'find-file-at-point)
 (key-chord-define-global "fd" 'evil-normal-state)
