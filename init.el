@@ -189,6 +189,10 @@
   :config
   (pyim-wbdict-v86-single-enable) ;; 86版单字词库（减少重码）
   )
+(use-package magit
+  :ensure t
+
+  )
 
 
 
