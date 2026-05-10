@@ -232,4 +232,9 @@
 
 
 
-(tool-bar-mode nil)
+(tool-bar-mode -1)
+
+
+(scroll-bar-mode -1 )
+
+(setq inhibit-startup-screen t)
