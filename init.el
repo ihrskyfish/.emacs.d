@@ -225,9 +225,11 @@
 
 
 
+
 ;; 绑定快捷键
 (global-set-key (kbd "C-c b") 'insert-current-bazi)
 
 
 
 
+(tool-bar-mode nil)
