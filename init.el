@@ -193,6 +193,21 @@
   :ensure t
 
   )
+(use-package key-chord
+  :ensure t
+  :config
+(key-chord-define-global "jk" 'find-file-at-point)
+(key-chord-define-global "fd" 'evil-normal-state)
+  )
+
+(use-package key-seq
+  :ensure t
+
+  :config
+  (key-seq-define-global "jk" 'avy-goto-char)
+  )
+
+;; 同时/快速按下 j 和 k → 执行命令
 
 
 
@@ -308,3 +323,6 @@
 (set-default-coding-systems 'utf-8)
 (set-terminal-coding-system 'utf-8)
 (set-keyboard-coding-system 'utf-8)  
+
+
+
