@@ -189,9 +189,28 @@
   :config
   (pyim-wbdict-v86-single-enable) ;; 86版单字词库（减少重码）
   )
+
 (use-package magit
   :ensure t
 
+  )
+(use-package hydra
+  :ensure t
+  :config
+  ;; 定义一个重复操作菜单
+(defhydra hydra-repeats (:timeout 0.3 :hint nil)
+  "
+   重复操作
+   _-_: 缩小字体    _=_: 放大字体
+   _h_: 窗口变窄    _l_: 窗口变宽
+   _s_: 交换窗口
+  "
+  ("-" text-scale-decrease)
+  ("=" text-scale-increase)
+  ("h" shrink-window-horizontally)
+  ("l" enlarge-window-horizontally)
+  ("s" window-swap-states)
+  ("q" nil :exit t))
   )
 (use-package key-chord
   :ensure t
