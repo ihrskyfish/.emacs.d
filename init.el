@@ -5,7 +5,16 @@
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(custom-enabled-themes '(manoj-dark))
- '(package-selected-packages nil))
+ '(package-selected-packages nil)
+ '(safe-local-variable-values
+   '((eval local-set-key (kbd "C-c d")
+	   (lambda nil (interactive)
+	     (execute-kbd-macro
+	      (kbd
+	       "C-x C-s <escape> & <down> k a n a t a <tab> - - d e b u g SPC - - c f g SPC <return>"))))
+     (eval local-set-key (kbd "C-c d")
+	   (lambda nil (interactive)
+	     (execute-kbd-macro (kbd "C-M-& echo 111")))))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
@@ -186,13 +195,13 @@
 
 (use-package pyim-wbdict
   :ensure t
+    :defer t
   :config
   (pyim-wbdict-v86-single-enable) ;; 86版单字词库（减少重码）
   )
 
 (use-package magit
   :ensure t
-  :defer t
 
   )
 (use-package hydra
@@ -215,15 +224,16 @@
   )
 (use-package key-chord
   :ensure
-  :defer 222
+
+  :commands key-chord-mode
   :config
-(key-chord-define-global "jk" 'find-file-at-point)
+(key-chord-define-global "fj" 'find-file-at-point)
 (key-chord-define-global "fd" 'evil-normal-state)
   )
 
 (use-package key-seq
   :ensure t
-
+  :defer 222
   :config
   (key-seq-define-global "jk" 'avy-goto-char)
   )
@@ -347,3 +357,28 @@
 
 
 
+;; 百度
+(setq eww-search-prefix "https://www.baidu.com/s?wd=")
+
+;; 或 Google
+;; (setq eww-search-prefix "https://www.google.com/search?q=")
+
+;; 或 Bing
+(setq eww-search-prefix "https://www.bing.com/search?q=")
+
+
+
+
+
+(setq my-eww-engines
+      '(("百度" . "https://www.baidu.com/s?wd=")
+        ("Google" . "https://www.google.com/search?q=")
+        ("DuckDuckGo" . "https://duckduckgo.com/html/?q=")))
+(defun my/eww-search-with-engine ()
+  "Search with selected engine in EWW."
+  (interactive)
+  (let* ((engine (completing-read "Search engine: " my-eww-engines nil t))
+         (prefix (cdr (assoc engine my-eww-engines)))
+         (query (read-string (format "Search (%s): " engine))))
+    (let ((eww-search-prefix prefix))
+      (eww query))))
