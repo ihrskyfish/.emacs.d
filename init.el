@@ -5,7 +5,7 @@
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(custom-enabled-themes '(manoj-dark))
- '(package-selected-packages nil)
+ '(package-selected-packages '(hydra key-seq liberime magit pyim-wbdict rime))
  '(safe-local-variable-values
    '((eval local-set-key (kbd "C-c d")
 	   (lambda nil (interactive)
