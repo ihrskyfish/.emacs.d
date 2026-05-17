@@ -5,7 +5,7 @@
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(custom-enabled-themes '(manoj-dark))
- '(package-selected-packages '(hydra key-seq liberime magit pyim-wbdict rime))
+ '(package-selected-packages nil)
  '(safe-local-variable-values
    '((eval local-set-key (kbd "C-c d")
 	   (lambda nil (interactive)
@@ -228,7 +228,7 @@
   :commands key-chord-mode
   :config
 (key-chord-define-global "fj" 'find-file-at-point)
-(key-chord-define-global "fd" 'evil-normal-state)
+(key-chord-define-global "fd" 'delete-pair)
   )
 
 (use-package key-seq
@@ -382,3 +382,22 @@
          (query (read-string (format "Search (%s): " engine))))
     (let ((eww-search-prefix prefix))
       (eww query))))
+
+
+(add-hook 'some-mode-hook
+          (lambda ()
+            (modify-syntax-entry ?# "<" (syntax-table))
+            (modify-syntax-entry ?\n ">" (syntax-table))))
+
+
+
+
+
+;; 设置单个变量
+(setenv "HTTP_PROXY" "http://127.0.0.1:7890")
+(setenv "HTTPS_PROXY" "http://127.0.0.1:7890")
+(setenv "ALL_PROXY" "socks5://127.0.0.1:7890")
+
+;; 设置 PATH（同时更新 exec-path，确保能找到外部命令）
+(setenv "PATH" (concat "/usr/local/bin:" (getenv "PATH")))
+(setq exec-path (append '("/usr/local/bin") exec-path))
