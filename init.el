@@ -6,6 +6,8 @@
  ;; If there is more than one, they won't work right.
  '(custom-enabled-themes '(manoj-dark))
  '(package-selected-packages nil)
+ '(recentf-auto-cleanup 'never)
+ '(recentf-max-saved-items nil)
  '(safe-local-variable-values
    '((eval local-set-key (kbd "C-c d")
 	   (lambda nil (interactive)
@@ -377,7 +379,7 @@
 ;; (setq eww-search-prefix "https://www.google.com/search?q=")
 
 ;; 或 Bing
-(setq eww-search-prefix "https://www.bing.com/search?q=")
+;; (setq eww-search-prefix "https://www.bing.com/search?q=")
 
 
 
@@ -385,6 +387,7 @@
 
 (setq my-eww-engines
       '(("百度" . "https://www.baidu.com/s?wd=")
+        ("github" . "https://www.github.com/search?q=")
         ("Google" . "https://www.google.com/search?q=")
         ("DuckDuckGo" . "https://duckduckgo.com/html/?q=")))
 (defun my/eww-search-with-engine ()
@@ -407,9 +410,9 @@
 
 
 ;; 设置单个变量
-(setenv "HTTP_PROXY" "http://127.0.0.1:7890")
-(setenv "HTTPS_PROXY" "http://127.0.0.1:7890")
-(setenv "ALL_PROXY" "socks5://127.0.0.1:7890")
+;; (setenv "HTTP_PROXY" "http://127.0.0.1:7890")
+;; (setenv "HTTPS_PROXY" "http://127.0.0.1:7890")
+;; (setenv "ALL_PROXY" "socks5://127.0.0.1:7890")
 
 ;; 设置 PATH（同时更新 exec-path，确保能找到外部命令）
 (setenv "PATH" (concat "/usr/local/bin:" (getenv "PATH")))
